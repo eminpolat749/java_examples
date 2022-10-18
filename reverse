@@ -1,0 +1,39 @@
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		ReverseTest.run();		
+	}
+}
+
+class ReverseTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		int val;
+		
+		System.out.print("Bir sayı giriniz:");
+		
+		while ((val = Integer.parseInt(kb.nextLine())) != 0) {
+			System.out.printf("%d sayısının tersi:%d%n", val, NumberUtil.reverse(val));
+			System.out.print("Bir sayı giriniz:");
+		}
+		
+		System.out.printf("0 sayısının tersi:%d%n", NumberUtil.reverse(val));		
+	}
+}
+
+class NumberUtil {
+	public static int reverse(int val)
+	{
+		int sum = 0;
+		
+		while (val != 0) {
+			sum = sum * 10 + val % 10;
+			val /= 10;
+		}
+		
+		return sum;
+	}
+}
