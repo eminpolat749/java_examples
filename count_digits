@@ -1,0 +1,43 @@
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		CountDigitsTest.run();		
+	}
+}
+
+class CountDigitsTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		int val;
+		
+		System.out.print("Bir sayı giriniz:");
+		
+		while ((val = Integer.parseInt(kb.nextLine())) != 0) {
+			System.out.printf("%d sayısının basamak sayısı:%d%n", val, NumberUtil.countDigits(val));
+			System.out.print("Bir sayı giriniz:");
+		}
+		
+		System.out.printf("0 sayısının basamak sayısı:%d%n", NumberUtil.countDigits(val));
+		
+	}
+}
+
+class NumberUtil {
+	public static int countDigits(int val)
+	{
+		if (val == 0)
+			return 1;
+		
+		int cnt = 0;
+		
+		while (val != 0) {
+			++cnt;
+			val /= 10;
+		}
+		
+		return cnt;
+	}
+}
