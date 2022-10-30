@@ -1,0 +1,43 @@
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		GetNextFibonacciNumberTest.run();
+	}
+}
+
+class GetNextFibonacciNumberTest {	
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Bir sayı giriniz:");
+			int val = Integer.parseInt(kb.nextLine());
+			
+			if (val <= 0)
+				break;
+			
+			System.out.printf("%d den sonraki ilk Fibonacci sayısı:%d%n", val, NumberUtil.getNextFibonacciNumber(val));
+		}
+		
+		System.out.println("Tekrar yapıyor musunuz?");
+	}
+}
+
+class NumberUtil {
+	public static int getNextFibonacciNumber(int val)
+	{
+        int first = 0, second = 1, temp;
+		
+		for (;;) {
+			if (second > val)
+				return second;
+			
+			temp = first + second;
+			first = second;
+			second = temp;			
+		}		
+	}	
+}
