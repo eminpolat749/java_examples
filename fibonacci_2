@@ -16,7 +16,7 @@ class GetNextFibonacciNumberTest {
 			System.out.print("Bir sayı giriniz:");
 			int val = Integer.parseInt(kb.nextLine());
 			
-			if (val <= 0)
+			if (val == 0)
 				break;
 			
 			System.out.printf("%d den sonraki ilk Fibonacci sayısı:%d%n", val, NumberUtil.getNextFibonacciNumber(val));
