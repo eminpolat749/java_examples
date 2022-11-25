@@ -1,0 +1,47 @@
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		PrimeFactorsTest.run();		
+	}	
+}
+
+class PrimeFactorsTest {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		for (;;) {
+			System.out.print("Bir sayı giriniz:");
+			int val = kb.nextInt();
+			
+			if (val == 0)
+				break;
+			
+			NumberUtil.primeFactors(val);			
+		}		
+		System.out.println("Döngü sonu");
+	}
+}
+
+class NumberUtil {
+	public static void primeFactors(int val)
+	{
+		if (val <= 1)
+			return;		
+		
+		int a = 2;
+		
+		while (val != 1) {
+			if (val % a == 0) {
+				System.out.printf("%d ", a);
+				val /= a;
+			}
+			else
+				++a;			
+		}		
+	}	
+}
+
+
