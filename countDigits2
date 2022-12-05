@@ -13,12 +13,10 @@ class App {
 
 class Util {
 	public static int countDigits(int val)
-	{
-		int count = 1;
+	{		
+		if (val == 0)
+			return 1;
 		
-		if (val != 0)
-			count = (int)Math.log10(Math.abs(val)) + 1;
-		
-		return count;
+		return (int)Math.log10(Math.abs(val)) + 1;
 	}
 }
