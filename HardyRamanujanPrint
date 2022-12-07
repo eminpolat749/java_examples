@@ -1,0 +1,47 @@
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		IsHardyRamanujanTest.run();
+	}
+}
+
+class IsHardyRamanujanTest {
+	public static void run()
+	{
+		for (int i = 1; i < 100_000; ++i)
+			if (NumberUtil.isHardyRamanujan(i))
+				System.out.println(i);		
+		
+	}
+}
+
+class NumberUtil {
+	public static boolean isHardyRamanujan(int val)
+	{
+		return val > 0 && getHardyRamanujanPairCount(val) == 2;		
+	}
+	public static int getHardyRamanujanPairCount(int val)
+	{
+		int c = 0, d = 0;
+		int count = 0;
+		EXIT_LOOP:
+		for (int a = 1; a * a * a < val; ++a)
+			for (int b = a + 1; a * a * a + b * b * b <= val; ++b)
+				if (a * a * a + b * b * b == val) {
+					++count;					
+					if (count == 2) {
+						System.out.printf("a:%d, b:%d, c:%d, d:%d%n", c, d, a, b);
+						break EXIT_LOOP;
+					}					
+					c = a;
+					d = b;
+					++a;
+				}		
+		
+		return count;
+	}
+}
+
+
