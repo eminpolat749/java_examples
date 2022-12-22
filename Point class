@@ -1,0 +1,52 @@
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		Point p1 = new Point();
+		Point p2 = new Point();
+		
+		p1.x = 100;
+		p1.y = 200;
+		
+		p2.x = 103;
+		p2.y = 204;
+		
+		System.out.printf("Distance:%f%n", p1.distance(p2));		
+	}
+}
+
+class Point {
+	public double x, y;
+	
+	public double distance()
+	{
+		return distance(0, 0);
+	}
+	
+	public double distance(Point other)
+	{
+		return distance(other.x, other.y);
+	}
+	
+	public double distance(double a, double b)
+	{
+		return Math.sqrt(Math.pow(x - a, 2) + Math.pow(y - b, 2));
+	}
+	
+	public void offset(double dxy)
+	{
+		offset(dxy, dxy);
+	}
+	
+	public void offset(double dx, double dy)
+	{
+		x += dx;
+		y += dy;
+	}
+	
+	public void print()
+	{
+		System.out.printf("(%f, %f)%n", x, y);
+	}
+}
