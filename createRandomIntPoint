@@ -1,0 +1,111 @@
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		RandomIntPointGeneratorApp.run();		
+	}
+}
+
+class RandomIntPointGeneratorApp {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		System.out.print("Tohum değerini giriniz:");
+		long seed = Long.parseLong(kb.nextLine());
+		
+		java.util.Random r = new java.util.Random(seed);
+		
+		for (;;) {
+			System.out.print("Kaç tane nokta üretilsin:");
+			int count = Integer.parseInt(kb.nextLine());
+			
+			if (count <= 0)
+				break;
+			
+			System.out.print("Minimum değeri giriniz:");
+			int min = Integer.parseInt(kb.nextLine());
+			
+			System.out.print("Maksimum değeri giriniz:");
+			int max = Integer.parseInt(kb.nextLine());
+			
+			for (int i = 0; i < count; ++i) {
+				IntPoint p = RandomIntPointGenerator.randomIntPoint(r, min, max);
+				
+				p.print();
+			}
+			
+		}
+	}
+}
+
+class RandomIntPointGenerator {
+	public static IntPoint randomIntPoint(java.util.Random r, int min, int max)
+	{
+		return new IntPoint(r.nextInt(min, max + 1), r.nextInt(min, max + 1));
+	}
+}
+
+class IntPoint {
+	public int x;
+	public int y;
+	
+	public IntPoint()
+	{
+		
+	}
+	
+	public IntPoint(int a)
+	{
+		x = a;
+	}
+	
+	public IntPoint(int a, int b)
+	{
+		x = a;
+		y = b;
+	}
+	
+	public double distance()
+	{
+		return distance(0, 0);
+	}
+	public double distance(IntPoint other)
+	{
+		return distance(other.x, other.y);
+	}
+	
+	public double distance(int a, int b)
+	{
+		return Math.sqrt(Math.pow(x - a, 2) + Math.pow(y - b, 2));
+	}
+	
+	public void offset(int dxy)
+	{
+		offset(dxy, dxy);
+	}
+	
+	public void offset(int dx, int dy)
+	{
+		x += dx;
+		y += dy;
+	}	
+	
+	public void print()
+	{
+		System.out.printf("(%d, %d)%n", x, y);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
