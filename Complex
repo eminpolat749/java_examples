@@ -3,10 +3,10 @@ package csd;
 class App {
 	public static void main(String [] args)
 	{
-		Complex c1 = new Complex(3, -2);
-		Complex c2 = new Complex(4, 3);
+		Complex c1 = new Complex(5, -10);
+		Complex c2 = new Complex(2, 1);
 		
-		Complex c = c1.multiply(c2);
+		Complex c = c1.divide(c2);
 		
 		c.print();		
 	}
@@ -33,9 +33,19 @@ class Complex {
 	
 	public static Complex divide(double re1, double im1, double re2, double im2)
 	{
-		// TODO
+		Complex c1 = new Complex();
+		Complex c2 = new Complex();
 		
-		return new Complex();		
+		double conRe = re2;
+		double conIm = -im2;		
+		
+		c1 = multiply(re1, im1, conRe, conIm);
+		c2 = multiply(re2, im2, conRe, conIm);
+		
+		c1.real = c1.real / c2.real;
+		c1.imag = c1.imag / c2.real;
+		
+		return c1;		
 	}
 	
 	public Complex()
