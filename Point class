@@ -3,21 +3,33 @@ package csd;
 class App {
 	public static void main(String [] args)
 	{
-		Point p1 = new Point();
+		Point p1 = new Point(3, 4);
 		Point p2 = new Point();
 		
-		p1.x = 100;
-		p1.y = 200;
+		System.out.printf("%f%n", p1.distance());
 		
-		p2.x = 103;
-		p2.y = 204;
-		
-		System.out.printf("Distance:%f%n", p1.distance(p2));		
 	}
 }
 
 class Point {
-	public double x, y;
+	public double x;
+	public double y;
+	
+	public Point()
+	{
+		
+	}
+	
+	public Point(double a)
+	{
+		x = a;
+	}
+	
+	public Point(double a, double b)
+	{
+		x = a;
+		y = b;
+	}
 	
 	public double distance()
 	{
@@ -50,3 +62,24 @@ class Point {
 		System.out.printf("(%f, %f)%n", x, y);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
